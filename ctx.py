@@ -2,7 +2,7 @@
 
 __author__ = 'Robert Ledger'
 __email__ = 'figlief@figlief.com'
-__version__ = '0.1.0'
+__version__ = '0.1.1'
 
 class Ctx(dict):
     """
