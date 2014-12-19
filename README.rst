@@ -40,12 +40,12 @@ the python 'dict' object.
 
     'ctx.name' and 'ctx["name"]' are resolved using the following three steps.
 
-        a) if the object has an attribute 'name' then return the attribute.
+        a)  if the object has an attribute 'name' then return the attribute.
 
-        b) if the dictionary has a key 'name' then return the value
+        b)  if the dictionary has a key 'name' then return the value
         associated with the key.
 
-        c) raise LookupError.
+        c)  raise LookupError.
 
 
     'ctx.name = 5' and 'ctx["name"] = 5'
@@ -76,7 +76,6 @@ Here is a list of useful links about this project.
 - `Latest release on PyPI <https://pypi.python.org/pypi/ctx>`_
 - `Source code on GitHub <https://github.com/figlief/ctx>`_
 - `Issue tracker on GitHub <https://github.com/figlief/ctx/issues>`_
-- `Changelog on GitHub
-  <https://github.com/figlief/ctx/blob/master/History.rst>`
+- `Changelog on GitHub <https://github.com/figlief/ctx/blob/master/History.rst>`
 
 

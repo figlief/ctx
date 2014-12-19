@@ -9,7 +9,7 @@ the python 'dict' object.
 
 __author__ = 'Robert Ledger'
 __email__ = 'figlief@figlief.com'
-__version__ = '0.1.2'
+__version__ = '0.1.3'
 
 
 class Ctx(dict):

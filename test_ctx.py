@@ -21,6 +21,7 @@ def test_attribute_error():
 
 def test_attribue_access():
     """Should return attribute of an object."""
+
     x = Ctx()
     assert x.__doc__ == x["__doc__"]
 
