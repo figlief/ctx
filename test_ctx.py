@@ -2,7 +2,31 @@ import pytest
 from ctx import Ctx
 
 
+def test_lookup_error():
+    """Should  return LookupError if no attiibute or key is found"""
+    with pytest.raises(LookupError):
+        x = Ctx()
+        (x.no_key == 5)
+    with pytest.raises(LookupError):
+        x = Ctx()
+        (x['no_key'] == 5)
+
+
+def test_attribute_error():
+    """Should raise AttributeError if attempt to set an attribute."""
+    with pytest.raises(AttributeError):
+        x = Ctx()
+        x.copy = 5
+
+
+def test_attribue_access():
+    """Should return attribute of an object."""
+    x = Ctx()
+    assert x.__doc__ == x["__doc__"]
+
+
 def test_init():
+    """Should initialize an object with keywords"""
     p = {}
     q = {}
 
@@ -14,6 +38,7 @@ def test_init():
 
 
 def test_item():
+    """Should set an item with ctx['a'] and retrieve it with ctx[a] or ctx.a"""
     p = {}
     x = Ctx()
     x['a'] = p
@@ -22,6 +47,7 @@ def test_item():
 
 
 def test_attr():
+    """Should set an item with ctx.a and retrieve it with ctx[a] or ctx.a"""
 
     p = {}
     x = Ctx()
@@ -31,6 +57,8 @@ def test_attr():
 
 
 def test_init_copy():
+    """Should create a shallow copy."""
+
     p = {}
     q = {}
 
