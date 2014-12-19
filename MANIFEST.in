@@ -1,7 +1,4 @@
-include LICENSE.txt
-include README.rst
-include requirements.txt
-include requirements-dev.txt
+include *.rst *.txt *.md LICENSE
 
 recursive-exclude * __pycache__
 recursive-exclude * *.py[co]

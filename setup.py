@@ -1,35 +1,32 @@
-#!/usr/bin/env python
-# -*- coding: utf-8 -*-
+from __future__ import unicode_literals
 
 import os
-import sys
+import codecs
 
-try:
-    from setuptools import setup
-except ImportError:
-    from distutils.core import setup
+from setuptools import setup
 
-version = "0.1.1"
-
-if sys.argv[-1] == 'publish':
-    try:
-        import wheel
-    except ImportError:
-        raise ImportError("Fix: pip install wheel")
-    os.system('python setup.py sdist bdist_wheel upload')
-    print("You probably want to also tag the version now:")
-    print("  git tag -a %s -m 'version %s'" % (version, version))
-    print("  git push --tags")
-    sys.exit()
+import ctx
 
 
-readme = open('README.rst').read()
+def read(*paths):
+    """Build a file path from *paths* and return the contents."""
+    path = os.path.join(*paths)
+    with codecs.open(path, mode='rb', encoding='utf-8') as f:
+        return f.read()
+
+
+long_description = '\n\n'.join(
+    map(read, (
+        'README.rst',
+    ))
+)
+
 
 setup(
     name='ctx',
-    version=version,
-    description="""A minimal but opinionated dict/object combo (like Bunch).""",
-    long_description=readme + '\n\n',
+    version=ctx.__version__,
+    description="A minimal but opinionated dict/object combo (like Bunch).",
+    long_description=long_description,
     author='Robert Ledger',
     author_email='figlief@figlief.com',
     url='https://github.com/figlief/ctx',
@@ -49,6 +46,6 @@ setup(
         'Programming Language :: Python :: 3',
         'Programming Language :: Python :: 3.3',
         'Programming Language :: Python :: 3.4',
+        'Topic :: Software Development :: Libraries :: Python Modules',
     ],
 )
-

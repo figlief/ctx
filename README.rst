@@ -1,39 +1,82 @@
-===============================
+===
 ctx
-===============================
+===
 
-.. image:: https://badge.fury.io/py/ctx.png
-    :target: http://badge.fury.io/py/ctx
+ctx - A minimal but opinionated dict/object combo (like Bunch).
 
 .. image:: https://travis-ci.org/figlief/ctx.png?branch=master
         :target: https://travis-ci.org/figlief/ctx
 
-.. image:: https://pypip.in/d/ctx/badge.png
-        :target: https://pypi.python.org/pypi/ctx
+.. contents::
+   :backlinks: none
 
-
-A minimal but opinionated dict/object combo (like Bunch).
+Requirements
+------------
+The ctx module should work with  all versions of Python.
 
 Features
-=========
+--------
 
-    A minimal but opinionated dict/object combo (like Bunch).
+The ctx module provides the `Ctx` class which is a subclass of
+the python 'dict' object.
 
-    Setting an attribute is the same as setting an item.
+    Ctx modifies 'dict' in the following ways:
 
-    So 'ctx.a = 5' is the same as 'ctx["a"] = 5'.
+        1  The dictionary items can be read or set using attribute
+        access notation.
 
-    Getting an attribute is the sameas getting an item.
+            'ctx.a' is identical to 'ctx["a"]' and
+            'ctx.a = 5' is identical to 'ctx["a"] = 5'
 
-    So 'x = ctx.a' is the same as 'x = ctx["a"]'
+        2  The objects attributes can be read using item access notation.
 
-    When getting a value, attributes have priority over dictionary items.
+            'ctx["__doc__"]' is identical to 'ctx.__doc__'
 
-    So 'ctx.copy and ctx["copy'] both return the 'copy' method for the class.
+        3  The objects attributes can not be set under any circumstances.
 
-    When setting a value, attrnbutes again have priority.
+        4  The dictionary can not have a key with the same name as an
+        objects attribute.
 
-    But Ctx does not allow attributesto be set.
 
-    So 'ctx.copy = 5' and 'ctx["copy"] = 5' both result in an AttributeError with a message  saying that attrbute copy is read only.
+    'ctx.name' and 'ctx["name"]' are resolved using the following three steps.
+
+        a) if the object has an attribute 'name' then return the attribute.
+
+        b) if the dictionary has a key 'name' then return the value
+        associated with the key.
+
+        c) raise LookupError.
+
+
+    'ctx.name = 5' and 'ctx["name"] = 5'
+
+        a) If name is an attribute of the class then raise AttributeError.
+
+        b) set the dictionary item as usual.
+
+
+Installation
+------------
+You can install this package using pip with the following command. ::
+
+    pip install ctx
+
+
+Support
+-------
+To report any bugs, or ask any question, please visit ::
+
+    https://github.com/figlief/ctx/issues.
+
+
+Resources
+---------
+Here is a list of useful links about this project.
+
+- `Latest release on PyPI <https://pypi.python.org/pypi/ctx>`_
+- `Source code on GitHub <https://github.com/figlief/ctx>`_
+- `Issue tracker on GitHub <https://github.com/figlief/ctx/issues>`_
+- `Changelog on GitHub
+  <https://github.com/figlief/ctx/blob/master/History.rst>`
+
 
